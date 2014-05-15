@@ -1,7 +1,6 @@
 
 An Vaadin Touchkit example project for android.
 
-
 - Create the unsigned apk
 $ mvn clean package
 

@@ -32,15 +32,26 @@
           document.addEventListener('deviceready', function() {
               var iframe = document.getElementById('app');
               var src = iframe.src.replace(/#.*$/, '');
+              var status = ''
+              function setStatus(sts) {
+                 iframe.src = src + '#';
+                 iframe.src = src + '#' + sts;
+              }
               document.addEventListener('offline', function() {
-                 iframe.src = src + '#offline';
+                 setStatus(status = 'offline');
               }, false);
               document.addEventListener('online', function() {
-                 iframe.src = src + '#online';
+                 setStatus(status = 'online');
+              }, false);
+              document.addEventListener('pause', function() {
+                 setStatus('pause');
+              }, false);
+              document.addEventListener('resume', function() {
+                 setStatus(status);
               }, false);
               if (navigator.network && navigator.network.connection && Connection &&
                   navigator.network.connection.type == Connection.NONE) {
-                    iframe.src = src + '#offline';
+                 setStatus(status = 'offline');
               }
           }, false);
         </script>

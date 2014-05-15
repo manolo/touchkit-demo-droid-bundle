@@ -27,7 +27,25 @@
     </head>
     <body style='margin: 0px'>
         <script type="text/javascript" src="cordova.js"></script>
-        <!-- <iframe style='width: 100%; height: 100%; position: absolute; border: none' src='http://192.168.2.5:8080/'/> -->
-        <iframe style='width: 100%; height: 100%; position: absolute; border: none' src='http://evo.alcala.org/demo/'/>
+        <script>
+          // Use cordova network plugin to change the iframe hash: #offline #online
+          document.addEventListener('deviceready', function() {
+              var iframe = document.getElementById('app');
+              var src = iframe.src.replace(/#.*$/, '');
+              document.addEventListener('offline', function() {
+                 iframe.src = src + '#offline';
+              }, false);
+              document.addEventListener('online', function() {
+                 iframe.src = src + '#online';
+              }, false);
+              if (navigator.network && navigator.network.connection && Connection &&
+                  navigator.network.connection.type == Connection.NONE) {
+                    iframe.src = src + '#offline';
+              }
+          }, false);
+        </script>
+
+        <!-- <iframe id='app' style='width: 100%; height: 100%; position: absolute; border: none' src='http://192.168.1.5:8080/'/> -->
+        <iframe id='app' style='width: 100%; height: 100%; position: absolute; border: none' src='http://evo.alcala.org/demo/'/>
     </body>
 </html>

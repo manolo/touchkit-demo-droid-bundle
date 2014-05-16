@@ -21,7 +21,8 @@
     vaadin.gwtStatsEvents = [];
     window.__gwtStatsEvent = function(event) {vaadin.gwtStatsEvents.push(event); return true;};
   }
-  var vurl = "http://hupa.alcala.org/demo/";
+  var onlineAppUrl = "http://hupa.alcala.org/demo/";
+  var widgetset = "com.vaadin.touchkit.demo.gwt.DemoAppWidgetSet";
   vaadin.initApplication("ROOT-2521314",{
     "heartbeatInterval": 60,
     "versionInfo": {
@@ -32,15 +33,15 @@
         "message": "Take note of any unsaved data, and <u>click here<\/u> or press ESC to continue.",
         "caption": "Authentication problem"
     },
-    "widgetset": "com.vaadin.touchkit.demo.gwt.DemoAppWidgetSet",
+    "widgetset": widgetset,
     "theme": "parking",
     "debug": true,
     "comErrMsg": {},
-    "serviceUrl": vurl,
-    "browserDetailsUrl": vurl,
+    "serviceUrl": onlineAppUrl,
+    "browserDetailsUrl": onlineAppUrl,
     "standalone": true,
     "sessExpMsg": {},
-    "widgetsetUrl": "./VAADIN/widgetsets/com.vaadin.touchkit.demo.gwt.DemoAppWidgetSet/com.vaadin.touchkit.demo.gwt.DemoAppWidgetSet.nocache.js"
+    "widgetsetUrl": "./VAADIN/widgetsets/" + widgetset + "/" + widgetset + ".nocache.js"
   });
 //]]></script>
  </body>
